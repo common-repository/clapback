@@ -1,0 +1,21 @@
+{
+	"landingPage": "/wp-admin/post.php?post=5&action=edit",
+	"preferredVersions": {
+		"php": "7.4",
+		"wp": "5.9"
+	},
+	"phpExtensionBundles": [
+		"kitchen-sink"
+	],
+	"steps": [
+		{
+			"step": "login",
+			"username": "admin",
+			"password": "password"
+		},
+		{
+			"step": "runPHP",
+			"code": "<?php\ninclude 'wordpress/wp-load.php';\nwp_insert_post(array(\n'import_id' => 5,\n'post_title' => 'Example Post',\n'post_content' => '<!-- wp:paragraph -->\n<p>a normal paragraph</p>\n<!-- \/wp:paragraph -->',\n'post_status' => 'publish',\n'post_author' => 1\n));"
+		}
+	]
+}
